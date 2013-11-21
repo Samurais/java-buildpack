@@ -30,6 +30,9 @@ shared_context 'diagnostics_helper' do
   previous_verbose_level = $VERBOSE
 
   let(:diagnostics_dir) { app_dir + JavaBuildpack::Diagnostics::DIAGNOSTICS_DIRECTORY }
+
+  let(:log_contents) { (diagnostics_dir + JavaBuildpack::Diagnostics::LOG_FILE_NAME).read }
+
   let(:logger) { JavaBuildpack::Diagnostics::LoggerFactory.create_logger app_dir }
 
   before do |example|

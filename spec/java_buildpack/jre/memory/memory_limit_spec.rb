@@ -57,25 +57,25 @@ module JavaBuildpack::Jre
     it 'should fail if a memory limit does not have a unit',
        memory_limit: '-1' do
 
-      expect { MemoryLimit.memory_limit }.to raise_error(/Invalid/)
+      expect { MemoryLimit.memory_limit }.to raise_error /Invalid/
     end
 
     it 'should fail if a memory limit is not an number',
        memory_limit: 'xm' do
 
-      expect { MemoryLimit.memory_limit }.to raise_error(/Invalid/)
+      expect { MemoryLimit.memory_limit }.to raise_error /Invalid/
     end
 
     it 'should fail if a memory limit is not an integer',
        memory_limit: '-1.1m' do
 
-      expect { MemoryLimit.memory_limit }.to raise_error(/Invalid/)
+      expect { MemoryLimit.memory_limit }.to raise_error /Invalid/
     end
 
     it 'should fail if a memory limit is negative',
        memory_limit: '-1m' do
 
-      expect { MemoryLimit.memory_limit }.to raise_error(/Invalid/)
+      expect { MemoryLimit.memory_limit }.to raise_error /Invalid/
     end
 
   end

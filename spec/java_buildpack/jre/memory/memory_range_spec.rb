@@ -22,10 +22,14 @@ module JavaBuildpack::Jre
 
   describe MemoryRange do
 
-    let(:test_lower_bound) { MemorySize.new('3m') }
-    let(:test_upper_bound) { MemorySize.new('5m') }
     let(:low) { MemorySize.new('1m') }
+
     let(:mid) { MemorySize.new('4m') }
+
+    let(:test_lower_bound) { MemorySize.new('3m') }
+
+    let(:test_upper_bound) { MemorySize.new('5m') }
+
 
     it 'should accept an absolute memory size and produce the corresponding tight range' do
       range = MemoryRange.new('3m')
@@ -100,19 +104,19 @@ module JavaBuildpack::Jre
     end
 
     it 'should fail if the range string is empty' do
-      expect { MemoryRange.new('2m..1m') }.to raise_error(/Invalid range/)
+      expect { MemoryRange.new('2m..1m') }.to raise_error /Invalid range/
     end
 
     it 'should fail if the range is empty' do
-      expect { MemoryRange.new(test_upper_bound, test_lower_bound) }.to raise_error(/Invalid range/)
+      expect { MemoryRange.new(test_upper_bound, test_lower_bound) }.to raise_error /Invalid range/
     end
 
     it 'should fail if the lower bound is not a MemorySize' do
-      expect { MemoryRange.new('', test_upper_bound) }.to raise_error(/Invalid combination of parameter types/)
+      expect { MemoryRange.new('', test_upper_bound) }.to raise_error /Invalid combination of parameter types/
     end
 
     it 'should fail if the upper bound is not a MemorySize' do
-      expect { MemoryRange.new(test_lower_bound, '') }.to raise_error(/Invalid MemorySize parameter of type/)
+      expect { MemoryRange.new(test_lower_bound, '') }.to raise_error /Invalid MemorySize parameter of type/
     end
 
     it 'should accept valid lower and upper bounds' do
